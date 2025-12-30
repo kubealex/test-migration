@@ -60,8 +60,8 @@ module "test_instance" {
 
   # Dependencies ensure modules are ready before instance creation
   depends_on = [
-    module.test_pool,
-    module.test_network
+    module.vm_pool,
+    module.vm_network
   ]
 
   instance_count        = 1
