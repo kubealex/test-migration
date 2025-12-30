@@ -55,7 +55,7 @@ module "vm_network" {
 }
 
 # Create an instance
-module "test_instance" {
+module "vm_instance" {
   source = "../terraform-libvirt-libvirt-resources/modules/terraform-libvirt-instance"
 
   # Dependencies ensure modules are ready before instance creation
@@ -74,7 +74,7 @@ module "test_instance" {
   instance_type         = "linux"
 
   # References the pool name exported by the pool module
-  instance_libvirt_pool = module.test_pool.pool_name
+  instance_libvirt_pool = module.vm_pool.pool_name
 
   instance_uefi_enabled = true
   instance_firmware     = "/usr/share/edk2/ovmf/OVMF_CODE.fd"
@@ -93,7 +93,7 @@ module "test_instance" {
   # Matches the 'list(object)' type defined in your variables
   instance_network_interfaces = [
     {
-      interface_network     = module.test_network.network_name
+      interface_network     = module.vm_network.network_name
       interface_mac_address = "52:54:00:ab:cd:01"
       interface_addresses   = ["192.168.10.50"]
       interface_hostname    = "test-vm"
