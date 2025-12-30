@@ -27,17 +27,17 @@ module "test_network" {
   network_name       = "test-network"
   network_mode       = "nat"
   network_domain     = "test.local"
-  network_cidr       = ["192.168.100.0/24"]
+  network_cidr       = ["192.168.10.0/24"]
   network_autostart  = true
   network_dns_enabled = true
   network_dns_local   = true
   network_dhcp_enabled = true
-  network_dhcp_range_start = "192.168.100.10"
-  network_dhcp_range_end   = "192.168.100.100"
+  network_dhcp_range_start = "192.168.10.10"
+  network_dhcp_range_end   = "192.168.10.100"
 
   # DNS entries for the test VM
   network_dns_entries = {
-    "test-vm" = "192.168.100.50"
+    "test-vm" = "192.168.10.50"
   }
 
   # Optional: Add a DNS SRV record
@@ -55,7 +55,7 @@ module "test_network" {
 
   network_routes = {
     # Optional: Add custom routes if needed
-    # "10.0.0.0/24" = "192.168.100.1"
+    # "10.0.0.0/24" = "192.168.10.1"
   }
 }
 
@@ -98,7 +98,7 @@ module "test_instance" {
     {
       interface_network     = module.test_network.network_name
       interface_mac_address = "52:54:00:ab:cd:01"
-      interface_addresses   = ["192.168.100.50"]
+      interface_addresses   = ["192.168.10.50"]
       interface_hostname    = "test-vm"
     }
   ]
