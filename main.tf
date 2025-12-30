@@ -14,7 +14,7 @@ provider "libvirt" {
 
 # Create a storage pool
 module "test_pool" {
-  source = "../terraform-libvirt-libvirt-resources/pool"
+  source = "../terraform-libvirt-libvirt-resources/terraform-libvirt-pool"
 
   pool_name = "test-pool"
   pool_path = "/var/lib/libvirt/images"
@@ -22,7 +22,7 @@ module "test_pool" {
 
 # Create a network
 module "test_network" {
-  source = "../terraform-libvirt-libvirt-resources/network"
+  source = "../terraform-libvirt-libvirt-resources/terraform-libvirt-network"
 
   network_name       = "test-network"
   network_mode       = "nat"
@@ -61,7 +61,7 @@ module "test_network" {
 
 # Create an instance
 module "test_instance" {
-  source = "../terraform-libvirt-libvirt-resources/instance"
+  source = "../terraform-libvirt-libvirt-resources/terraform-libvirt-instance"
 
   # Dependencies
   depends_on = [
