@@ -13,7 +13,7 @@ provider "libvirt" {
 }
 
 # Create a storage pool
-module "test_pool" {
+module "vm_pool" {
   source = "../terraform-libvirt-libvirt-resources/modules/terraform-libvirt-pool"
 
   pool_name = "test-pool"
@@ -21,7 +21,7 @@ module "test_pool" {
 }
 
 # Create a network
-module "test_network" {
+module "vm_network" {
   source = "../terraform-libvirt-libvirt-resources/modules/terraform-libvirt-network"
 
   network_name             = "test-network"
